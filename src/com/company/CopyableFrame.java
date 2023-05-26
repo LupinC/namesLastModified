@@ -8,6 +8,7 @@ public class CopyableFrame extends JFrame {
     public CopyableFrame(String text) {
         setTitle("Copyable Frame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(1000, 100);
 
         textArea = new JTextArea(text);
         textArea.setEditable(false);
