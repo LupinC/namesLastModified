@@ -1,7 +1,11 @@
 package com.company;
 
 
+import javax.swing.*;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 
 public class LastModified {
@@ -52,6 +56,37 @@ public class LastModified {
         return sb.toString();
     }
 
+    public void writeToFile2(File[] files, String outputFilePath) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath))) {
+            for (File file : files) {
+                writer.write(file.getName());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+/*    class ChatBoxGUI extends JFrame{
+        private JTextField inputField;
+
+        public ChatBoxGUI() {
+            setTitle("Input GUI");
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setSize(300, 100);
+            setLocationRelativeTo(null);
+
+            inputField = new JTextField();
+            inputField.addActionListener(e -> {
+                String userInput = inputField.getText();
+                JOptionPane.showMessageDialog(this, "User Input: " + userInput);
+                inputField.setText("");
+            });
+
+            add(inputField);
+        }
+    }*/
+
 
     public static void main(String[] args) {
         String path1 = "C:\\Users\\cy295\\OneDrive\\Desktop";
@@ -60,8 +95,16 @@ public class LastModified {
 
         Date givenDate = new Date(123,0,1);
 
+
+        JFrame frame = new JFrame();
+        frame.setSize(500,500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Test Frame");
+        frame.setVisible(true);
+
         LastModified a = new LastModified();
         File[] files = a.getFiles(path1, givenDate);
         System.out.println(a.writeToFile(files));
+
     }
 }
