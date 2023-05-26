@@ -11,7 +11,7 @@ public class ChatBoxGUI extends JFrame {
 
 
     public ChatBoxGUI() {
-        setTitle("the use of this app is to find files that is modified after a given date input yyyymmdd and a path, eg, 20230101C:/Users/cy295/OneDrive/Desktop");
+        setTitle("the use of this app is to find files that is modified after a given date, input yyyymmdd and a path, eg, 20230101C:/Users/cy295/OneDrive/Desktop");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 100);
         setLocationRelativeTo(null);
