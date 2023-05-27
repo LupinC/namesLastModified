@@ -36,6 +36,7 @@ public class ChatBoxGUI extends JFrame {
 
             SwingUtilities.invokeLater(() -> {
                 CopyableFrame frame = new CopyableFrame(output);
+                frame.setSize(1500, 2000);
                 frame.setVisible(true);
             });
         });
