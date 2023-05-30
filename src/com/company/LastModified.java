@@ -28,8 +28,16 @@ public class LastModified {
 
         for (File file : files)
         {
-            if(file.lastModified() > givenTime){
-                resultFiles = appendToFileArray(resultFiles, file);
+            if(file.isDirectory())
+            {
+                File[] files1 = file.listFiles();
+                getFiles(files1, givenDate);
+            }
+
+            else {
+                if (file.lastModified() > givenTime) {
+                    resultFiles = appendToFileArray(resultFiles, file);
+                }
             }
         }
 
