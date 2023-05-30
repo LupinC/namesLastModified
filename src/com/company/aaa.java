@@ -26,28 +26,26 @@ public class aaa {
     }
 
     public boolean isModifiedAfter(File file, Date date){
-
         long givenDate = date.getTime();
-        if(file.isDirectory()) {
 
+        if (file.isDirectory()) {
             File[] files = file.listFiles();
-            List<Boolean> check = new ArrayList<>();
-            int count = 0;
 
-            for(File file1: files) {
-                boolean flag = isModifiedAfter(file1,date);
-                check.add(flag);
-            }
+            if (files != null) {
+                boolean modified = false;
+                for (File subFile : files) {
+                    if (isModifiedAfter(subFile, date)) {
+                        modified = true;
+                        break;
+                    }
+                }
 
-            for(Boolean a: check) {
-                if(a == false) {
-                    count++;
+                if (!modified) {
+                    return false;
                 }
             }
-
-            if (count== files.length)
-                return false;
         }
+
         return file.lastModified() >= givenDate;
     }
 
