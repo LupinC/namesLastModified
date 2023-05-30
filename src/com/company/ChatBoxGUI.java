@@ -3,6 +3,7 @@ package com.company;
 import javax.swing.*;
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 public class ChatBoxGUI extends JFrame {
     private JTextField inputField;
@@ -27,11 +28,11 @@ public class ChatBoxGUI extends JFrame {
 
             this.date = new Date(y,m,d);
 
-            LastModified a = new LastModified();
-            File[] files = a.getFiles(path, date);
-            String output = a.writeToFile(files);
+            aaa a = new aaa();
+            List files = a.getModifiedFiles(path, date);
+            String output = a.joinWithNewLine(files);
 
-            JOptionPane.showMessageDialog(this, a.writeToFile(files));
+            JOptionPane.showMessageDialog(this, output);
             inputField.setText("");
 
             SwingUtilities.invokeLater(() -> {
