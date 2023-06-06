@@ -20,7 +20,7 @@ public class ModifiedGUI extends JFrame {
 
 
     public ModifiedGUI() {
-        setTitle("");
+        setTitle("Find and Move, run it as admin please");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 750);
         setLocationRelativeTo(null);
