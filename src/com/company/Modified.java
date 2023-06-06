@@ -5,23 +5,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class aaa {
+public class Modified {
 
-    public List<String> getModifiedFiles(String directoryPath, Date date) {
-        List<String> modifiedFiles = new ArrayList<>();
+    public List<File> getModifiedFiles(String directoryPath, Date date) {
+        List<File> modifiedFiles = new ArrayList<>();
         File directory = new File(directoryPath);
 
         if (directory.exists() && directory.isDirectory()) {
             File[] files = directory.listFiles();
 
             if (files != null) {
-                for (File file : files) {
+                try{for (File file : files) {
                         if(isModifiedAfter(file, date)){
-                            modifiedFiles.add(file.getName());
+                            modifiedFiles.add(file);
                         }
                     }
-                }
+                }catch (RuntimeException ignored){}
             }
+        }
         return modifiedFiles;
     }
 
@@ -50,31 +51,21 @@ public class aaa {
     }
 
 
-    public String joinWithNewLine(List<String> items) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (String item : items) {
-            stringBuilder.append(item);
-            stringBuilder.append(System.lineSeparator()); // Adds a new line separator
-        }
-
-        return stringBuilder.toString();
-    }
 
     public static void main(String[] args) {
-        String directoryPath = "C:/Users/cy295/OneDrive/Desktop/";
+        String directoryPath = "C:/Users/cy295/OneDrive/Desktop/转生成为史莱姆";
         Date date = new Date(123, 0,1);
 
-        aaa a = new aaa();
-        List<String> modifiedFiles = a.getModifiedFiles(directoryPath,date );
+        Modified a = new Modified();
+        List<File> modifiedFiles = a.getModifiedFiles(directoryPath,date );
 
         File b = new File(directoryPath);
 
         System.out.println(b.isDirectory());
         System.out.println(a.isModifiedAfter(new File(directoryPath),date));
         System.out.println("Modified files:");
-        for (String fileName : modifiedFiles) {
-            System.out.println(fileName);
+        for (File fileName : modifiedFiles) {
+            System.out.println(fileName.getName());
         }
     }
 }
