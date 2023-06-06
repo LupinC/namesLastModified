@@ -46,7 +46,11 @@ public class ModifiedGUI extends JFrame {
                 Modified modified = new Modified();
                 List<File> files = modified.getModifiedFiles(src,date);
 
-                if (files.isEmpty()) {
+
+                if(src.equals(dst)){
+                    modifiedFiles.setText("Source directory cannot be the same as destination directory");
+                }
+                else if (files.isEmpty()) {
                     modifiedFiles.setText("No files found.");
                 } else {
                     StringBuilder sb = new StringBuilder();
