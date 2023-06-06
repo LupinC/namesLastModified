@@ -31,7 +31,7 @@ public class ModifiedGUI extends JFrame {
         DstDir = new JTextField();
         modifiedFiles = new JTextArea();
 
-        JButton searchButton = new JButton("DO");
+        JButton searchButton = new JButton("Find and Move");
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.File;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -35,7 +36,9 @@ public class CopyToNewLocation {
                 Files.move(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
 
                 System.out.println("Moved file: " + file.getAbsolutePath() + " to " + destinationFile.getAbsolutePath());
-            } catch (Exception e) {
+            } catch (AccessDeniedException e){
+                System.out.println("please run as admin");
+            }catch (Exception e) {
                 System.err.println("Failed to move file: " + file.getAbsolutePath());
                 e.printStackTrace();
             }
