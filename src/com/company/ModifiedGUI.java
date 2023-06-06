@@ -50,7 +50,7 @@ public class ModifiedGUI extends JFrame {
                     modifiedFiles.setText("No files found.");
                 } else {
                     StringBuilder sb = new StringBuilder();
-                    sb.append("Found files modified after:\n");
+                    sb.append("Found files modified after: ").append(da).append(" ").append("\n");
                     for (File s : files) {
                         sb.append(s.getName()).append("\n");
                     }
